@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../base-component/base-component.component';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-log-in-modal',
@@ -8,12 +9,21 @@ import { BaseComponent } from '../base-component/base-component.component';
 })
 export class LogInModalComponent extends BaseComponent implements OnInit {
 
-  constructor() {
+  constructor( private dialogRef: MatDialogRef<LogInModalComponent>) {
     super();
   }
 
+  override transferAuth(event: Event): void {
+    event.preventDefault();
+    this.dialogRef.close(true);
+   }
+
+   login(event: Event): void {
+     event.preventDefault();
+     //this.dialogRef.close(true);
+    }
+
   ngOnInit(): void {
-    super.test();
-  }
+   }
 
 }

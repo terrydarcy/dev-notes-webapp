@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../base-component/base-component.component';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-account-modal',
@@ -8,12 +9,26 @@ import { BaseComponent } from '../base-component/base-component.component';
 })
 export class CreateAccountModalComponent extends BaseComponent implements OnInit {
 
-  constructor() {
+  constructor(private dialogRef: MatDialogRef<CreateAccountModalComponent>) {
     super();
   }
 
   ngOnInit(): void {
-    super.test();
   }
 
+  override transferAuth(event: Event): void {
+    event.preventDefault();
+    this.dialogRef.close(true);
+   }
+
+   createAccountEmailPassword(event: Event): void {
+    event.preventDefault();
+    
+    //this.dialogRef.close(true);
+   }
+   createAccountGitHub(event: Event): void {
+    event.preventDefault();
+    
+    //this.dialogRef.close(true);
+   }
 }

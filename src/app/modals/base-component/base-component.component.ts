@@ -13,10 +13,8 @@ export class BaseComponent {
 
   constructor() { }
 
-  test() {
-    console.log("testing 123 works!")
-   }
-
+  transferAuth(event: Event) {}
+ 
   //login user email & password
   //login user github
   

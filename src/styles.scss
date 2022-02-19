@@ -72,6 +72,11 @@ body {
   height: 100% !important;
 }
 
+.darkPrimary {
+  background-color: mat.get-color-from-palette($dev-notes-webapp-primary,"darker") !important;
+  color: white;
+}
+
 .profile-icon{
   background-color: mat.get-color-from-palette($dev-notes-webapp-primary,"darker") !important;
   mat-icon{
