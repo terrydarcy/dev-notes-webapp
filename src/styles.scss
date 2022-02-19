@@ -12,7 +12,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$dev-notes-webapp-primary: mat.define-palette(mat.$light-blue-palette);
+$dev-notes-webapp-primary: mat.define-palette(mat.$blue-palette);
 $dev-notes-webapp-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -40,6 +40,7 @@ $angular-dark-theme: mat.define-dark-theme(
   )
 );
 
+ 
 .darkMode {
   @include mat.all-component-colors($angular-dark-theme);
 }
@@ -52,3 +53,11 @@ $angular-dark-theme: mat.define-dark-theme(
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-dialog-container {
+  padding: 0px !important;
+
+}
+.app-create-account-modal{
+  height: 100% !important;
+}

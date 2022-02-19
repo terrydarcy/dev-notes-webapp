@@ -1,0 +1,38 @@
+.app-create-account-modal {
+  height: 100%;
+}
+
+.create-account-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0px;
+  padding-top: 0px;
+  height: 100%;
+
+  .create-account-modal-left {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    background-color: #2196f3;
+    height: 100%;
+  }
+
+  .create-account-modal-right {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-direction: column;
+  }
+}

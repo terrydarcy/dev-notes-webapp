@@ -1,8 +1,13 @@
 <mat-toolbar color="primary">
     <h2>Developer Notes</h2>
     <div class="flex-stretch"></div>
-    <mat-icon class="mr-8">brightness_5</mat-icon>
+    <mat-icon class="mr-8" *ngIf ="isDark === false">brightness_5</mat-icon>
+    <mat-icon *ngIf ="isDark === true">bedtime</mat-icon>
+
     <mat-slide-toggle [formControl]="toggleControl" class="mr-8"></mat-slide-toggle>
-    <mat-icon>bedtime</mat-icon>
+    <button mat-stroked-button mat-icon-button (click)="openDialog()"> 
+      <mat-icon class="profile-icon">person</mat-icon>
+    </button>
+    
   </mat-toolbar>
   
