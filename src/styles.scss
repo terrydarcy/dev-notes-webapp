@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -13,20 +12,27 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $dev-notes-webapp-primary: mat.define-palette(mat.$blue-palette);
-$dev-notes-webapp-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
+$dev-notes-webapp-accent: mat.define-palette(
+  mat.$orange-palette,
+  A200,
+  A100,
+  A400
+);
 
 // The warn palette is optional (defaults to red).
 $dev-notes-webapp-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$dev-notes-webapp-theme: mat.define-light-theme((
-  color: (
-    primary: $dev-notes-webapp-primary,
-    accent: $dev-notes-webapp-accent,
-    warn: $dev-notes-webapp-warn,
+$dev-notes-webapp-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $dev-notes-webapp-primary,
+      accent: $dev-notes-webapp-accent,
+      warn: $dev-notes-webapp-warn,
+    ),
   )
-));
+);
 
 @include mat.all-component-themes($dev-notes-webapp-theme);
 
@@ -40,7 +46,6 @@ $angular-dark-theme: mat.define-dark-theme(
   )
 );
 
- 
 .darkMode {
   @include mat.all-component-colors($angular-dark-theme);
 }
@@ -51,13 +56,25 @@ $angular-dark-theme: mat.define-dark-theme(
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .mat-dialog-container {
   padding: 0px !important;
-
 }
-.app-create-account-modal{
+.app-create-account-modal {
   height: 100% !important;
+}
+
+.profile-icon{
+  background-color: mat.get-color-from-palette($dev-notes-webapp-primary,"darker") !important;
+  mat-icon{
+    color: white !important;
+  }
 }

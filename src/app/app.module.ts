@@ -11,17 +11,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
  import { HeaderComponent } from './header/header.component';
-import { BaseComponent } from './create-account-modal/base-component/base-component.component';
-import { CreateAccountModalComponent } from './create-account-modal/create-account-modal.component';
+import { BaseComponent } from './modals/base-component/base-component.component';
+import { CreateAccountModalComponent } from './modals/create-account-modal/create-account-modal.component';
+import { LogInModalComponent } from './modals/log-in-modal/log-in-modal.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     BaseComponent,
-    CreateAccountModalComponent
+    CreateAccountModalComponent,
+    LogInModalComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import {MatInputModule} from '@angular/material/input';
     MatDialogModule,
     MatInputModule,
     MatIconModule,
+    MatMenuModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

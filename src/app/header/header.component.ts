@@ -2,7 +2,8 @@ import { Component, HostBinding, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import {MatDialog} from '@angular/material/dialog';
-import {CreateAccountModalComponent} from '../create-account-modal/create-account-modal.component';
+import {CreateAccountModalComponent} from '../modals/create-account-modal/create-account-modal.component';
+import {LogInModalComponent} from '../modals/log-in-modal/log-in-modal.component';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,8 +16,19 @@ export class HeaderComponent implements OnInit {
   isDark: boolean = false;
 
   constructor(public overlay: OverlayContainer, public dialog: MatDialog) {}
-  openDialog() {
+  openCreateAccountDialog() {
     const dialogRef = this.dialog.open(CreateAccountModalComponent , {
+      height: '400px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openLogInDialog() {
+    const dialogRef = this.dialog.open(LogInModalComponent , {
       height: '400px',
       width: '600px',
     });

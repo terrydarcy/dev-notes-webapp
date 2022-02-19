@@ -1,23 +1,29 @@
 mat-toolbar {
+  display: flex;
+  align-items: center;
+ 
+  button {
     display: flex;
     align-items: center;
-     
-    button{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    mat-slide-toggle{ 
-        margin-left: 5px;
-        margin-right: 5px;
-    }
+    justify-content: center;
+  }
+
 }
 
+mat-slide-toggle {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px;
+  padding-left: 15px;
+}
 .flex-stretch {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 
-    .top {
-
-    }
+  .top {
+  }
 }
