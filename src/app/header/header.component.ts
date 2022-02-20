@@ -4,7 +4,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAccountModalComponent } from '../modals/create-account-modal/create-account-modal.component';
 import { LogInModalComponent } from '../modals/log-in-modal/log-in-modal.component';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-header',

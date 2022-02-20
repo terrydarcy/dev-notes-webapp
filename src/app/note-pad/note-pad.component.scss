@@ -1,0 +1,41 @@
+::ng-deep .mat-chip-list-wrapper {
+    display: flex;
+    flex-wrap: nowrap!important;
+}
+::-webkit-scrollbar {
+    
+    height:7px;
+}
+ 
+ 
+::-webkit-scrollbar-track-piece {
+    background: rgb(190, 190, 190)
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(134, 134, 134)
+}
+
+.projects-container {
+    overflow: hidden;
+    overflow-x: auto!important;
+    scrollbar-width: thin;
+    max-height: 50px;
+    mat-chip {
+        flex: 0 0 auto;
+        padding: 16px;
+    }
+}
+.note-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+
+  .note {
+    min-width: 300px;
+    max-width: 400px;
+    margin-bottom: 10px;
+    border-top: 5px solid;
+  }
+}

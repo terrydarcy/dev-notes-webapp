@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { auth, _signInWithEmailAndPassword, _loginWithGitHub,  _createUserWithEmailAndPassword} from '../../firebase';
+import { auth, _signInWithEmailAndPassword, _loginWithGitHub,  _createUserWithEmailAndPassword} from '../../../firebase';
 import { Router } from '@angular/router';
  import { signOut } from 'firebase/auth';
 @Injectable({

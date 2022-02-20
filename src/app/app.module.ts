@@ -20,6 +20,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 import { NotePadComponent } from './note-pad/note-pad.component';
 import { FooterComponent } from './footer/footer.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
+    MatCardModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
@@ -41,6 +44,7 @@ import { FooterComponent } from './footer/footer.component';
     MatSlideToggleModule,
     MatDialogModule,
     MatInputModule,
+    MatChipsModule,
     MatIconModule,
     MatMenuModule,
     BrowserAnimationsModule,

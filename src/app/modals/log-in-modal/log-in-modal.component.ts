@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../base-component/base-component.component';
 import { MatDialogRef } from '@angular/material/dialog';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../services/auth/auth.service';
 @Component({
   selector: 'app-log-in-modal',
   templateUrl: './log-in-modal.component.html',
