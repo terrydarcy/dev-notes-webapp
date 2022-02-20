@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../base-component/base-component.component';
 import {MatDialogRef} from '@angular/material/dialog';
 import {_createUserWithEmailAndPassword } from "../../../firebase";
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-create-account-modal',
@@ -14,7 +15,7 @@ export class CreateAccountModalComponent extends BaseComponent implements OnInit
   email: string = "";
   password: string= "";
 
-  constructor(private dialogRef: MatDialogRef<CreateAccountModalComponent>) {
+  constructor(private dialogRef: MatDialogRef<CreateAccountModalComponent>, private authService: AuthService) {
     super();
   }
 
@@ -28,12 +29,9 @@ export class CreateAccountModalComponent extends BaseComponent implements OnInit
 
    createAccountEmailPassword(event: Event): void {
     event.preventDefault();
-    console.log(this.email);
-    console.log(this.password);
-    console.log(this.username);
-    _createUserWithEmailAndPassword(this.username, this.email, this.password)
-    //this.dialogRef.close(true);
+    this.authService.createAccount(this.dialogRef,this.username, this.email, this.password);    
    }
+
    createAccountGitHub(event: Event): void {
     event.preventDefault();
     

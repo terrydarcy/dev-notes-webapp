@@ -9,12 +9,12 @@
         <form class="example-form">
             <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="Ex. elonmusk@email.com" />
+            <input matInput type="email" placeholder="Ex. elonmusk@email.com"  [(ngModel)]="email" name="email"/>
             </mat-form-field>
         
             <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Password</mat-label>
-            <input matInput type="password" />
+            <input matInput type="password"  [(ngModel)]="password" name="password"/>
             </mat-form-field>
 
             <button mat-raised-button color="primary" (click)="login($event)" >Log In</button>

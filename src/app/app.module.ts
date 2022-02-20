@@ -18,6 +18,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
+import { NotePadComponent } from './note-pad/note-pad.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     BaseComponent,
     CreateAccountModalComponent,
-    LogInModalComponent
+    LogInModalComponent,
+    NotePadComponent
   ],
   imports: [
     BrowserModule,

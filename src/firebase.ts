@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile  } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -28,14 +28,32 @@ export const _createUserWithEmailAndPassword: any = (username:string, email:stri
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log("user signed in..." + user);
+    const seed =  Math.floor(Math.random() * 1000) + 1
+    updateProfile(user, {displayName: username, photoURL: `https://picsum.photos/${seed}/picsum/200`});
+
+     // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.error(error)
+    // ..
+  });
+}
+  export const _signInWithEmailAndPassword = (email:string, password: string) => {
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+ 
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    // ..
+    console.error(error)
   });
-  
-
 }
+
+ 
+ 
