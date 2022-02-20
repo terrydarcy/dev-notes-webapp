@@ -14,34 +14,49 @@ import { AuthService } from '../auth/auth.service';
 export class HeaderComponent implements OnInit {
   toggleControl = new FormControl(false);
   user: any = false;
+  parentRef = this.overlay.getContainerElement().parentElement;
 
   @HostBinding('class') className = '';
-  isDark: boolean = false;
+  darkModeLocal: boolean = localStorage.getItem('darkMode') === 'true' ? true : false;
 
-  constructor(public overlay: OverlayContainer, public dialog: MatDialog, private authService:AuthService) {}
-  
+  constructor(
+    public overlay: OverlayContainer,
+    public dialog: MatDialog,
+    private authService: AuthService
+  ) {}
+
   ngOnInit(): void {
     this.authService.getUserLoginStatus().subscribe((isLoggedIn: any) => {
       if (isLoggedIn) {
         this.user = isLoggedIn;
       } else {
-        this.user = null; 
+        this.user = null;
       }
+      setDarkModeFromLocalStorage();
     });
+
+    const setDarkModeFromLocalStorage = () => {
+ 
+      if (this.darkModeLocal && this.parentRef) {
+        this.toggleControl.enable();
+         this.parentRef.classList.add('darkMode');
+      } else if (this.parentRef) {
+         this.parentRef.classList.remove('darkMode');
+      }
+    };
     this.toggleControl.valueChanges.subscribe((darkMode) => {
       const darkClassName = 'darkMode';
       this.className = darkMode ? darkClassName : '';
-      let parentRef = this.overlay.getContainerElement().parentElement;
-       if (darkMode && parentRef) {
-        this.isDark = true;
-        parentRef.classList.add(darkClassName);
-      } else if (parentRef) {
-        this.isDark = false;
-        parentRef.classList.remove(darkClassName);
+      if (darkMode && this.parentRef) {
+         this.parentRef.classList.add(darkClassName);
+        localStorage.setItem('darkMode', 'true');
+      } else if (this.parentRef) {
+         this.parentRef.classList.remove(darkClassName);
+        localStorage.setItem('darkMode', 'false');
       }
     });
   }
-  
+
   openCreateAccountDialog() {
     const dialogRef = this.dialog.open(CreateAccountModalComponent, {
       height: '500px',
@@ -69,6 +84,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-     this.authService.logout();
+    this.authService.logout();
   }
 }

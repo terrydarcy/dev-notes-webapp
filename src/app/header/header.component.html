@@ -5,9 +5,18 @@
     <div class="flex-stretch"></div>
     
     
-    <button mat-mini-fab class ="profile-icon" [matMenuTriggerFor]="menu"> 
-      <mat-icon class="profile-icon">person</mat-icon>
-    </button>
+    <div *ngIf="user else userNotLoggedIn"> 
+      <button mat-mini-fab class ="profile-icon" *ngIf = "user.photoURL"  [matMenuTriggerFor]="menu"> 
+
+         <img [src]="user.photoURL" class="profile-picture" width="20px" alt="">
+      </button>
+    </div>
+
+    <ng-template #userNotLoggedIn>
+      <button mat-mini-fab class ="profile-icon" [matMenuTriggerFor]="menu"> 
+        <mat-icon class="profile-icon">person</mat-icon>
+      </button>
+    </ng-template>
     <!-- (click)="openDialog()"  -->
     
     <mat-menu #menu="matMenu">
@@ -16,15 +25,27 @@
         {{user.displayName}}
       </div>
       <ng-container *ngIf="!user">
-        <button mat-menu-item (click)="openLogInDialog()">Log In</button>
-        <button mat-menu-item (click)="openCreateAccountDialog()" >Create New Account</button>
-      </ng-container>
-      <button *ngIf="user" mat-menu-item (click)="logout()" >Logout</button>
+        <div mat-menu-item (click)="openLogInDialog()">
+          <mat-icon class="mr-8">login</mat-icon>
+
+          Log In
+        </div>
+        
+        <div mat-menu-item (click)="openCreateAccountDialog()">
+          <mat-icon class="mr-8">how_to_reg</mat-icon>
+          Create New Account
+        </div>
+       </ng-container>
+
+      <div mat-menu-item *ngIf="user" (click)="logout()">
+        <mat-icon class="mr-8">logout</mat-icon>
+        Logout
+      </div>
       
-      <div class ="dark-mode-toggle">
+      <div mat-menu-item class ="dark-mode-toggle">
         <!-- <mat-icon class="mr-8" color= "accent" >brightness_5</mat-icon> -->
         <mat-icon class="mr-8" color= "accent" >bedtime</mat-icon>
-        <mat-slide-toggle [formControl]="toggleControl" class="mr-3"></mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)] = "darkModeLocal"  [formControl]="toggleControl" class="mr-3"></mat-slide-toggle>
       </div>
     </mat-menu>
     
