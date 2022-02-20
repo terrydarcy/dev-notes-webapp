@@ -28,8 +28,7 @@ export const _createUserWithEmailAndPassword: any = (username:string, email:stri
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    const seed =  Math.floor(Math.random() * 1000) + 1
-    updateProfile(user, {displayName: username, photoURL: `https://picsum.photos/${seed}/picsum/200`});
+    updateProfile(user, {displayName: username, photoURL: `https://picsum.photos/seed/${username}/200`});
 
      // ...
   })

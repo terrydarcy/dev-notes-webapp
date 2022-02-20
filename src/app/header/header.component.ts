@@ -17,45 +17,43 @@ export class HeaderComponent implements OnInit {
   parentRef = this.overlay.getContainerElement().parentElement;
 
   @HostBinding('class') className = '';
-  darkModeLocal: boolean = localStorage.getItem('darkMode') === 'true' ? true : false;
+  darkModeLocal: boolean =
+    localStorage.getItem('darkMode') === 'true' ? true : false;
 
-  constructor(
-    public overlay: OverlayContainer,
-    public dialog: MatDialog,
-    private authService: AuthService
-  ) {}
-
-  ngOnInit(): void {
+  constructor(public overlay: OverlayContainer, public dialog: MatDialog, private authService: AuthService) {
     this.authService.getUserLoginStatus().subscribe((isLoggedIn: any) => {
       if (isLoggedIn) {
         this.user = isLoggedIn;
       } else {
         this.user = null;
       }
-      setDarkModeFromLocalStorage();
+      console.log(this.user);
     });
+    this.setDarkModeFromLocalStorage();
+  }
 
-    const setDarkModeFromLocalStorage = () => {
- 
-      if (this.darkModeLocal && this.parentRef) {
-        this.toggleControl.enable();
-         this.parentRef.classList.add('darkMode');
-      } else if (this.parentRef) {
-         this.parentRef.classList.remove('darkMode');
-      }
-    };
+  ngOnInit(): void {
     this.toggleControl.valueChanges.subscribe((darkMode) => {
       const darkClassName = 'darkMode';
       this.className = darkMode ? darkClassName : '';
       if (darkMode && this.parentRef) {
-         this.parentRef.classList.add(darkClassName);
+        this.parentRef.classList.add(darkClassName);
         localStorage.setItem('darkMode', 'true');
       } else if (this.parentRef) {
-         this.parentRef.classList.remove(darkClassName);
+        this.parentRef.classList.remove(darkClassName);
         localStorage.setItem('darkMode', 'false');
       }
     });
   }
+
+  setDarkModeFromLocalStorage = () => {
+    if (this.darkModeLocal && this.parentRef) {
+      this.toggleControl.enable();
+      this.parentRef.classList.add('darkMode');
+    } else if (this.parentRef) {
+      this.parentRef.classList.remove('darkMode');
+    }
+  };
 
   openCreateAccountDialog() {
     const dialogRef = this.dialog.open(CreateAccountModalComponent, {
