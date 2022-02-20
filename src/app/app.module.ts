@@ -17,6 +17,7 @@ import { LogInModalComponent } from './modals/log-in-modal/log-in-modal.componen
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MatMenuModule} from '@angular/material/menu';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     MatButtonModule,
     MatToolbarModule,

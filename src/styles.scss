@@ -11,6 +11,10 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
+
+$custom-typography: mat.define-typography-config(
+     $font-family: 'Roboto',
+  );
 $dev-notes-webapp-primary: mat.define-palette(mat.$blue-palette);
 $dev-notes-webapp-accent: mat.define-palette(
   mat.$orange-palette,
@@ -31,6 +35,8 @@ $dev-notes-webapp-theme: mat.define-light-theme(
       accent: $dev-notes-webapp-accent,
       warn: $dev-notes-webapp-warn,
     ),
+    typography: $custom-typography,
+
   )
 );
 
@@ -43,6 +49,8 @@ $angular-dark-theme: mat.define-dark-theme(
       accent: $dev-notes-webapp-accent,
       warn: $dev-notes-webapp-warn,
     ),
+    typography: $custom-typography,
+
   )
 );
 
