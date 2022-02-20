@@ -66,6 +66,7 @@ $angular-dark-theme: mat.define-dark-theme(
 
 html,
 body {
+  position: relative;
   height: 100%;
 }
 body {
@@ -85,9 +86,3 @@ body {
   color: white;
 }
 
-.profile-icon{
-  background-color: mat.get-color-from-palette($dev-notes-webapp-primary,"darker") !important;
-  mat-icon{
-    color: white !important;
-  }
-}

@@ -9,5 +9,5 @@ mat-toolbar {
 
 .content {
     padding: 16px;
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
 }

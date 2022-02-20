@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
 
   openCreateAccountDialog() {
     const dialogRef = this.dialog.open(CreateAccountModalComponent, {
-      height: '500px',
+      height: '550px',
       width: '650px',
     });
 

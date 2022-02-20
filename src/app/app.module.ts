@@ -19,6 +19,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 import { NotePadComponent } from './note-pad/note-pad.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NotePadComponent } from './note-pad/note-pad.component';
     BaseComponent,
     CreateAccountModalComponent,
     LogInModalComponent,
-    NotePadComponent
+    NotePadComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

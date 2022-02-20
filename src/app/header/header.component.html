@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
-    <img src="../../assets/devnotes.png" width= "35px" alt="" style ="margin-right: 10px">
+    <img src="../../assets/newlogo.png"  width= "35px" alt="" style ="margin-right: 10px; border-radius: 7px">
 
-    <h2>DevNotes</h2>
+    <h2 color ="accent">DevNotes</h2>
     <div class="flex-stretch"></div>
     
     
@@ -13,15 +13,15 @@
     </div>
 
     <ng-template #userNotLoggedIn>
-      <button mat-mini-fab class ="profile-icon" [matMenuTriggerFor]="menu"> 
-        <mat-icon class="profile-icon">person</mat-icon>
+      <button mat-mini-fab   color="accent" [matMenuTriggerFor]="menu"> 
+        <mat-icon class = "profile-icon">person</mat-icon>
       </button>
     </ng-template>
     <!-- (click)="openDialog()"  -->
     
     <mat-menu #menu="matMenu">
       <div mat-menu-item *ngIf="user"> 
-        <mat-icon>person</mat-icon>
+        <mat-icon color ="accent">person</mat-icon>
         {{user.displayName}}
       </div>
       <ng-container *ngIf="!user">
@@ -32,13 +32,13 @@
         </div>
         
         <div mat-menu-item (click)="openCreateAccountDialog()">
-          <mat-icon class="mr-8">how_to_reg</mat-icon>
-          Create New Account
+          <mat-icon  class="mr-8">how_to_reg</mat-icon>
+          Create Account
         </div>
        </ng-container>
 
       <div mat-menu-item *ngIf="user" (click)="logout()">
-        <mat-icon class="mr-8">logout</mat-icon>
+        <mat-icon  class="mr-8">logout</mat-icon>
         Logout
       </div>
       
