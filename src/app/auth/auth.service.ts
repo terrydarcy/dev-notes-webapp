@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { auth, _signInWithEmailAndPassword } from '../../firebase';
+import { auth, _signInWithEmailAndPassword, _loginWithGitHub,  _createUserWithEmailAndPassword} from '../../firebase';
 import { Router } from '@angular/router';
-import { _createUserWithEmailAndPassword } from '../../firebase';
-import { signOut } from 'firebase/auth';
+ import { signOut } from 'firebase/auth';
 @Injectable({
   providedIn: 'root',
 })
@@ -39,6 +38,13 @@ export class AuthService {
     _createUserWithEmailAndPassword(username, email, password);
     dialogRef.close(false);
     this.emitChanges();
+  }
+
+  loginWithGitHub(dialogRef: any) {
+    _loginWithGitHub();
+    dialogRef.close(false);
+    this.emitChanges();
+
   }
 
   logout() {

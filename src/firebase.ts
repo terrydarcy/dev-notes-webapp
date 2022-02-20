@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile  } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword, updateProfile, GithubAuthProvider} from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,6 +22,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 export const auth = getAuth(app);
+const provider = new GithubAuthProvider();
 
 export const _createUserWithEmailAndPassword: any = (username:string, email:string, password: string) => {
   createUserWithEmailAndPassword(auth, email, password)
@@ -39,7 +40,8 @@ export const _createUserWithEmailAndPassword: any = (username:string, email:stri
     // ..
   });
 }
-  export const _signInWithEmailAndPassword = (email:string, password: string) => {
+
+export const _signInWithEmailAndPassword = (email:string, password: string) => {
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
@@ -53,6 +55,32 @@ export const _createUserWithEmailAndPassword: any = (username:string, email:stri
     console.error(error)
   });
 }
+
+export const _loginWithGitHub = () => {
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+    const credential = GithubAuthProvider.credentialFromResult(result);
+    if(credential) {
+      const token = credential.accessToken;
+      console.log("token", token);
+    }
+
+    // The signed-in user info.
+    const user = result.user;
+    console.log("github user", user);
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = GithubAuthProvider.credentialFromError(error);
+    console.error(errorCode, errorMessage, email, credential);
+  });
+}
+
 
  
  

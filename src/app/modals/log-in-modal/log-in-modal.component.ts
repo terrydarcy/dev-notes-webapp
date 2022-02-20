@@ -27,5 +27,8 @@ export class LogInModalComponent extends BaseComponent implements OnInit {
     event.preventDefault();
     this.authService.login(this.dialogRef,this.email, this.password);
   }
-
+  loginWithGitHub(event: Event): void {
+    event.preventDefault();
+    this.authService.loginWithGitHub(this.dialogRef);    
+   }
 }

@@ -13,9 +13,14 @@
 // hue. Available color palettes: https://material.io/design/color/
 
 $custom-typography: mat.define-typography-config(
-     $font-family: 'Roboto',
-  );
-$dev-notes-webapp-primary: mat.define-palette(mat.$blue-palette);
+  $font-family: "Roboto",
+);
+$dev-notes-webapp-primary: mat.define-palette(
+  mat.$blue-palette,
+  A400,
+  A200,
+  A100
+);
 $dev-notes-webapp-accent: mat.define-palette(
   mat.$orange-palette,
   A200,
@@ -36,7 +41,6 @@ $dev-notes-webapp-theme: mat.define-light-theme(
       warn: $dev-notes-webapp-warn,
     ),
     typography: $custom-typography,
-
   )
 );
 
@@ -50,7 +54,6 @@ $angular-dark-theme: mat.define-dark-theme(
       warn: $dev-notes-webapp-warn,
     ),
     typography: $custom-typography,
-
   )
 );
 
@@ -82,7 +85,9 @@ body {
 }
 
 .darkPrimary {
-  background-color: mat.get-color-from-palette($dev-notes-webapp-primary,"darker") !important;
+  background-color: mat.get-color-from-palette(
+    $dev-notes-webapp-primary,
+    "lighter"
+  ) !important;
   color: white;
 }
-

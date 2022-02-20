@@ -1,51 +1,58 @@
 <mat-toolbar color="primary">
     <img src="../../assets/newlogo.png"  width= "35px" alt="" style ="margin-right: 10px; border-radius: 7px">
 
-    <h2 color ="accent">DevNotes</h2>
+    <h2  >DevNotes</h2>
     <div class="flex-stretch"></div>
     
-    
-    <div *ngIf="user else userNotLoggedIn"> 
-      <button mat-mini-fab class ="profile-icon" *ngIf = "user.photoURL"  [matMenuTriggerFor]="menu"> 
+    <button mat-mini-fab style = "margin-right: 15px"  [matMenuTriggerFor]="addMenu"> 
+      <mat-icon class = "profile-icon">add</mat-icon>
+    </button>
 
+    <div *ngIf="user else userNotLoggedIn"> 
+      <button mat-mini-fab class ="profile-icon" *ngIf = "user.photoURL"  [matMenuTriggerFor]="profileMenu"> 
          <img [src]="user.photoURL" class="profile-picture" width="20px" alt="">
       </button>
     </div>
-
     <ng-template #userNotLoggedIn>
-      <button mat-mini-fab   color="accent" [matMenuTriggerFor]="menu"> 
+      <button mat-mini-fab   [matMenuTriggerFor]="profileMenu"> 
         <mat-icon class = "profile-icon">person</mat-icon>
       </button>
     </ng-template>
-    <!-- (click)="openDialog()"  -->
     
-    <mat-menu #menu="matMenu">
+    <mat-menu #profileMenu="matMenu">
       <div mat-menu-item *ngIf="user"> 
-        <mat-icon color ="accent">person</mat-icon>
+        <mat-icon>person</mat-icon>
         {{user.displayName}}
       </div>
       <ng-container *ngIf="!user">
         <div mat-menu-item (click)="openLogInDialog()">
           <mat-icon class="mr-8">login</mat-icon>
-
           Log In
-        </div>
-        
+        </div>  
         <div mat-menu-item (click)="openCreateAccountDialog()">
-          <mat-icon  class="mr-8">how_to_reg</mat-icon>
+          <mat-icon class="mr-8">how_to_reg</mat-icon>
           Create Account
         </div>
-       </ng-container>
-
+      </ng-container>
       <div mat-menu-item *ngIf="user" (click)="logout()">
         <mat-icon  class="mr-8">logout</mat-icon>
         Logout
       </div>
-      
       <div mat-menu-item class ="dark-mode-toggle">
         <!-- <mat-icon class="mr-8" color= "accent" >brightness_5</mat-icon> -->
         <mat-icon class="mr-8" color= "accent" >bedtime</mat-icon>
         <mat-slide-toggle [(ngModel)] = "darkModeLocal"  [formControl]="toggleControl" class="mr-3"></mat-slide-toggle>
+      </div>
+    </mat-menu>
+
+    <mat-menu #addMenu="matMenu">
+      <div mat-menu-item > 
+        <mat-icon class="mr-8">add</mat-icon>
+        Add Note
+      </div>
+      <div mat-menu-item (click)="openLogInDialog()">
+        <mat-icon class="mr-8">add</mat-icon>
+        Add Project
       </div>
     </mat-menu>
     

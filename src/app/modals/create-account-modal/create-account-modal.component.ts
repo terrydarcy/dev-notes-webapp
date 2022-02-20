@@ -34,7 +34,6 @@ export class CreateAccountModalComponent extends BaseComponent implements OnInit
 
    createAccountGitHub(event: Event): void {
     event.preventDefault();
-    
-    //this.dialogRef.close(true);
+    this.authService.loginWithGitHub(this.dialogRef);    
    }
 }
