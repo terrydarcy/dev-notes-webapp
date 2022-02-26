@@ -1,0 +1,9 @@
+{
+    "/api/*": {
+        "target": "http://us-central1-dev-notes-a7a54.cloudfunctions.net/devNotesAPI",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+
+    }
+}

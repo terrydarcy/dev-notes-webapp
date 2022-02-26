@@ -9,6 +9,13 @@ mat-toolbar {
     justify-content: center;
   }
 
+  .home-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 5px;
+  }
 }
 
 mat-slide-toggle {
@@ -24,14 +31,13 @@ mat-slide-toggle {
 }
 .flex-stretch {
   flex: 1 0 auto;
-
 }
-.profile-picture{
+.profile-picture {
   width: 80%;
   border-radius: 50%;
   margin: 0px;
-}  
+}
 
-.profile-icon{
-  color: white !important; 
+.profile-icon {
+  color: white !important;
 }

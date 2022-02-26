@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import axios, {AxiosObservable} from "axios-observable"
 import { BehaviorSubject, Observable } from 'rxjs';
 import {Note} from "../../models/Interfaces";
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,34 +10,49 @@ import {Note} from "../../models/Interfaces";
 })
 export class NoteService {
 
-  baseUrl: string = "http://localhost:5001/dev-notes-a7a54/us-central1/devNotesAPI";
-  notesUrl: string  = "http://localhost:5001/dev-notes-a7a54/us-central1/devNotesAPI/notes";
+  baseUrl: string;
+  notesUrl: string = "/notes";
 
   constructor() { 
-    //12345
-    console.log(this.getNotes("12345"));
+    if (environment.production) {
+      this.baseUrl = "https://us-central1-dev-notes-a7a54.cloudfunctions.net/devNotesAPI";
+     } else {
+      // this.baseUrl = "http://localhost:5001/dev-notes-a7a54/us-central1/devNotesAPI";
+       this.baseUrl = "https://us-central1-dev-notes-a7a54.cloudfunctions.net/devNotesAPI";
+
+     }
   }
 
   getNotes(user_id : string) : AxiosObservable<Note> { 
-    let url = `user/${user_id}`;
+    console.log(user_id);
+    let url = `/notes/user/${user_id}`;
     
     let result = axios.request({
+      headers :{
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
       method:'get',
       url: url,
-      baseURL: this.notesUrl,
+      baseURL: this.baseUrl,
      })
+     
  
      return result;
   }
 
-  setNote(user_id: string) {
+  setNote(user_id: string, note_title:string, note_text:string) {
     let result = axios.request({
+      headers :{
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
       method:'post',
-      url: "/",
-      baseURL: this.notesUrl,
+      url: "/notes/",
+      baseURL: this.baseUrl,
       data: {
         user_id: user_id,
-        note_text: "test from ANGULAR!",
+        note_text: note_text,
         timestamp: new Date()
       }
      })

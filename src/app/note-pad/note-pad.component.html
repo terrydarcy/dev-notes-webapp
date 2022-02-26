@@ -1,7 +1,6 @@
 <!-- <p *ngIf ="user">{{user.email}}</p> -->
  
     <mat-toolbar class="projects-container">
-
         <mat-chip-list>
             <mat-chip class="example-box" cdkDrag> Project1 </mat-chip>
             <mat-chip class="example-box" cdkDrag> Project2 </mat-chip>
@@ -15,17 +14,26 @@
             <mat-chip class="example-box" cdkDrag> Project1 </mat-chip>
             <mat-chip class="example-box" cdkDrag> Project2 </mat-chip>
             <mat-chip class="example-box" cdkDrag> Project3 </mat-chip>
-            
         </mat-chip-list>
     </mat-toolbar>
- 
-<!-- *ngFor="let vegetable of vegetables"> -->
-<div class="note-container">
-  <ng-container *ngIf="notes">
+    <!-- *ngFor="let vegetable of vegetables"> -->
+    <div class="note-container">
+      <app-add-note *ngIf = "user" [user] = "user"></app-add-note>
+      <ng-container *ngIf="notes">
     <mat-card class="note primary_border" *ngFor="let note of notes">
       <mat-card-title-group>
         <mat-card-title>{{ note.id }} {{ note.user_id }}</mat-card-title>
-        <mat-card-subtitle>{{ note.timestamp }}</mat-card-subtitle>
+        <!-- <mat-card-subtitle *ngIf="note.timestamp"> 
+          <span class = "timestamp">
+            <span class = "accent">
+              {{note.timestamp.getHours()}}:{{note.timestamp.getMinutes()}} 
+            </span>
+            <span class = "time">
+              @
+               {{note.timestamp.getDate}}/{{note.timestamp.getMonth}}/{{note.timestamp.getFullYear}}
+            </span>
+           </span>
+         </mat-card-subtitle> -->
       </mat-card-title-group>
       <mat-card-content>{{ note.note_text }}</mat-card-content>
     </mat-card>

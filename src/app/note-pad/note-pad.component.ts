@@ -21,22 +21,18 @@ export class NotePadComponent implements OnInit {
     this.authService.getUserLoginStatus().subscribe((isLoggedIn: any) => {
       if (isLoggedIn) {
         this.user = isLoggedIn;
+        this.notesDataObservable = this.noteService.getNotes(this.user.uid.toString());
+        this.notesDataObservable.subscribe((result) => {
+          if(result.data) {
+            console.log("result from note service:", result.data);
+            this.notes = result.data;
+          }
+        });
+
       } else {
         this.user = null;
       }
     });
-
-    //add note to db 
-    //this.noteService.setNote("12345");
     
-    //get notes from db for user_id 
-    this.notesDataObservable = this.noteService.getNotes("12345");
-
-    this.notesDataObservable.subscribe((result) => {
-      if(result.data) {
-        console.log("result from note service:", result.data);
-        this.notes = result.data;
-      }
-    });
   }
 }

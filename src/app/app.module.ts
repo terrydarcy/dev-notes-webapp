@@ -22,6 +22,7 @@ import { NotePadComponent } from './note-pad/note-pad.component';
 import { FooterComponent } from './footer/footer.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
+import { AddNoteComponent } from './note-pad/add-note/add-note.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatChipsModule} from '@angular/material/chips';
     CreateAccountModalComponent,
     LogInModalComponent,
     NotePadComponent,
-    FooterComponent
+    FooterComponent,
+    AddNoteComponent
   ],
   imports: [
     BrowserModule,

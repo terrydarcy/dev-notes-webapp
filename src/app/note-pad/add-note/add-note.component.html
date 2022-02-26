@@ -1,0 +1,78 @@
+<mat-card *ngIf="!isDisabled; else disabled" class="add-note-card">
+  <mat-card-content>
+    <form class="add-note-form">
+      <mat-form-field class="add-note-field" appearance="fill">
+        <mat-label>Note title</mat-label>
+        <input
+          type="text"
+          matInput
+          [ngModel]="title"
+          (ngModelChange)="title = $event"
+          [formControl]="titleFormControl"
+          placeholder="eg. Optimise Algorithm"
+        />
+        <mat-error
+          *ngIf="
+            titleFormControl.hasError('minlength') &&
+            !titleFormControl.hasError('required')
+          "
+        >
+          Title must be longer than 3 characters
+        </mat-error>
+        <mat-error *ngIf="titleFormControl.hasError('required')">
+          Note title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="add-note-field" appearance="fill">
+        <mat-label>Note description</mat-label>
+        <textarea
+          text="text"
+          matInput
+          [ngModel]="description"
+          (ngModelChange)="description = $event"
+          [formControl]="descriptionFormControl"
+          placeholder="eg. Optimise Algorithm"
+        ></textarea>
+        <mat-error
+          *ngIf="descriptionFormControl.hasError('minlength') &&
+            !descriptionFormControl.hasError('required')"
+        >
+          description must be longer than 3 characters
+        </mat-error>
+        <mat-error *ngIf="descriptionFormControl.hasError('required')">
+          Note description is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <span class="add-buttons-footer" >
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="
+            descriptionFormControl.hasError('required') ||
+            descriptionFormControl.hasError('minlength')
+          "
+          (click)="addNote($event)"
+        >
+          Add Note
+        </button>
+        <button mat-raised-button color="warn" (click) = "close($event)">Cancel</button>
+      </span>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #disabled>
+  <div class="add-note-card-disabled"
+    [class.btn-success]="mouseOvered" 
+    (mouseover)="mouseOvered=true"
+    (mouseout)="mouseOvered=false"
+    (click)="isDisabled=false"
+  >
+    <button mat-mini-fab class ="add-note-button"  >
+        <mat-icon class="profile-icon">add</mat-icon>
+    </button>
+    Add Note
+  </div>
+</ng-template>

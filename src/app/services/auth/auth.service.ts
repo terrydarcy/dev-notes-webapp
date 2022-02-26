@@ -54,7 +54,7 @@ export class AuthService {
         this.emitChanges();
         this.userLoginStatusSubject.next(null);
 
-        this.router.navigate(['/']);
+        this.router.navigate(['/note-pad']);
       })
       .catch((error: any) => {
         console.error(error);

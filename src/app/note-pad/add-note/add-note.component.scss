@@ -1,0 +1,43 @@
+.add-note-card {
+  min-width: 300px;
+  max-width: 400px;
+  margin-bottom: 30px;
+
+  // border-top: 5px solid;
+
+  textarea {
+    max-height: 500px;
+  }
+  .add-note-field {
+    width: 100%;
+    margin-top: 5px;
+  }
+  .add-buttons-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    button {
+      margin-left: 10px;
+    }
+  }
+}
+
+.add-note-card-disabled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+
+  .add-note-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+  }
+
+
+}
+ 
