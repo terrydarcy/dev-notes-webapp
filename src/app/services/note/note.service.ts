@@ -40,7 +40,7 @@ export class NoteService {
      return result;
   }
 
-  setNote(user_id: string, note_title:string, note_text:string) {
+  setNote(user_id: string, note_title:string, note_text:string) : AxiosObservable<Note>  {
     let result = axios.request({
       headers :{
         "Content-Type": "application/json",
@@ -56,8 +56,7 @@ export class NoteService {
         timestamp: new Date()
       }
      })
+     return result;
 
-     result.subscribe();
-    
   }
 }

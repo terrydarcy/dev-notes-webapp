@@ -34,4 +34,8 @@ export class NotePadComponent implements OnInit {
     });
     
   }
+
+  addNoteFromEmitter(newNote: any) {
+     this.notes.unshift(newNote);
+  }
 }

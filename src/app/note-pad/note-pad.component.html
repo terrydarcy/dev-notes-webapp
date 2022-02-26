@@ -13,7 +13,7 @@
     </mat-toolbar>
     <!-- *ngFor="let vegetable of vegetables"> -->
     <div class="note-container">
-      <app-add-note *ngIf = "user" [user] = "user"></app-add-note>
+      <app-add-note *ngIf = "user" (noteEmmiter)= "addNoteFromEmitter($event)" [user] = "user"></app-add-note>
       <ng-container *ngIf="notes">
     <mat-card class="note primary_border" *ngFor="let note of notes">
       <mat-card-title-group>

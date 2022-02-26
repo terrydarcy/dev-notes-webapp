@@ -6,7 +6,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import {take} from 'rxjs/operators';
 import {pairwise, startWith} from 'rxjs/operators';
- 
+import { Output, EventEmitter } from '@angular/core';
+import { Note } from '../../models/Interfaces';
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
@@ -21,7 +22,8 @@ export class AddNoteComponent implements OnInit {
   title: string = "";
   description: string= "";
   faCheckSquare = faCheckSquare as IconProp;
-  
+  @Output() noteEmmiter = new EventEmitter<Note>();
+
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
   @Input() user: any;
 
@@ -44,6 +46,10 @@ export class AddNoteComponent implements OnInit {
     });
   }
 
+  emitNote(note: Note) {
+    this.noteEmmiter.emit(note);
+  }
+
   triggerResize() {
     // Wait for changes to be applied, then trigger textarea resize.
     this._ngZone.onStable.pipe(take(1)).subscribe(() => this.autosize.resizeToFitContent(true));
@@ -51,8 +57,13 @@ export class AddNoteComponent implements OnInit {
 
   addNote(e: Event) { 
     e.preventDefault();  
-    this.noteService.setNote(this.user.uid, this.capitalizeFirstLetter(this.title), this.capitalizeFirstLetter(this.description));
-    this.close(e);
+    const noteObservable = this.noteService.setNote(this.user.uid, this.capitalizeFirstLetter(this.title), this.capitalizeFirstLetter(this.description));
+    noteObservable.subscribe((result) => {
+      if(result.data) {
+         this.emitNote(result.data);
+      }
+    });
+     this.close(e);
   }
   
   capitalizeFirstLetter(text: string) {
