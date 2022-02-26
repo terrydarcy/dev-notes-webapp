@@ -63,13 +63,11 @@ export const _loginWithGitHub = () => {
     const credential = GithubAuthProvider.credentialFromResult(result);
     if(credential) {
       const token = credential.accessToken;
-      console.log("token", token);
-    }
+     }
 
     // The signed-in user info.
     const user = result.user;
-    console.log("github user", user);
-  }).catch((error) => {
+   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;

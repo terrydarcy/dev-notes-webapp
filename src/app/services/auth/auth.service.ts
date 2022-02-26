@@ -69,7 +69,6 @@ export class AuthService {
       if (credential) {
         this.isLoggedIn = true;
         this.userLoginStatusSubject.next(credential);
-        console.log('User is logged in');
       } else {
         this.userLoginStatusSubject.next(null);
       }

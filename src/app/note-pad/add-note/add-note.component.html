@@ -1,4 +1,4 @@
-<mat-card *ngIf="!isDisabled; else disabled" class="add-note-card">
+<mat-card *ngIf="!isDisabled; else disabled" class="add-note-card accent_border">
   <mat-card-content>
     <form class="add-note-form">
       <mat-form-field class="add-note-field" appearance="fill">
@@ -6,10 +6,8 @@
         <input
           type="text"
           matInput
-          [ngModel]="title"
-          (ngModelChange)="title = $event"
           [formControl]="titleFormControl"
-          placeholder="eg. Optimise Algorithm"
+          placeholder="eg. Optimise algorithm"
         />
         <mat-error
           *ngIf="
@@ -29,10 +27,12 @@
         <textarea
           text="text"
           matInput
-          [ngModel]="description"
-          (ngModelChange)="description = $event"
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="20"
           [formControl]="descriptionFormControl"
-          placeholder="eg. Optimise Algorithm"
+          placeholder="eg. Use binary search to optimise algorithm"
         ></textarea>
         <mat-error
           *ngIf="descriptionFormControl.hasError('minlength') &&
@@ -45,20 +45,39 @@
         </mat-error>
       </mat-form-field>
 
-      <span class="add-buttons-footer" >
-        <button
+      <div class="add-buttons-footer" >
+        <div class = "footer-left">
+          <mat-button-toggle-group name="fontStyle" aria-label="Font Style" multiple>
+            <mat-button-toggle value="checklist">
+              <mat-icon color="accent">check_box</mat-icon>
+             </mat-button-toggle>
+             <mat-button-toggle value="dueDate">
+              <mat-icon color="accent">access_time</mat-icon>
+             </mat-button-toggle>
+           </mat-button-toggle-group>
+
+          <div class = "tool-button-col">
+            <button color="primary" mat-icon-button class = "mat-fab-tool">
+             
+            </button>
+          </div>
+        </div>
+
+        <div class = "footer-right">
+          <button mat-raised-button color="warn" (click) = "close($event)">Cancel</button>
+          <button
           mat-raised-button
           color="primary"
           [disabled]="
-            descriptionFormControl.hasError('required') ||
-            descriptionFormControl.hasError('minlength')
+          descriptionFormControl.hasError('required') ||
+          descriptionFormControl.hasError('minlength')
           "
           (click)="addNote($event)"
-        >
+          >
           Add Note
         </button>
-        <button mat-raised-button color="warn" (click) = "close($event)">Cancel</button>
-      </span>
+      </div>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

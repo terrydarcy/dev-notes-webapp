@@ -23,6 +23,8 @@ import { FooterComponent } from './footer/footer.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import { AddNoteComponent } from './note-pad/add-note/add-note.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -47,15 +49,17 @@ import { AddNoteComponent } from './note-pad/add-note/add-note.component';
     MatDialogModule,
     MatInputModule,
     MatChipsModule,
+    MatButtonToggleModule,
     MatIconModule,
     MatMenuModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

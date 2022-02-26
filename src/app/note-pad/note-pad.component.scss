@@ -31,10 +31,12 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  margin-left:20px;
+  margin-right:20px;
 
   .note {
-    min-width: 300px;
-    max-width: 400px;
+    min-width: 350px;
+    max-width: 350px;
     margin-bottom: 10px;
     border-top: 5px solid;
   }

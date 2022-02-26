@@ -24,7 +24,6 @@ export class NotePadComponent implements OnInit {
         this.notesDataObservable = this.noteService.getNotes(this.user.uid.toString());
         this.notesDataObservable.subscribe((result) => {
           if(result.data) {
-            console.log("result from note service:", result.data);
             this.notes = result.data;
           }
         });

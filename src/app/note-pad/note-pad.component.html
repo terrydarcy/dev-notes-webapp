@@ -9,11 +9,6 @@
             <mat-chip class="example-box" cdkDrag> Project2 </mat-chip>
             <mat-chip class="example-box" cdkDrag> Project3 </mat-chip>
             <mat-chip class="example-box" cdkDrag> Project1 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project2 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project3 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project1 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project2 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project3 </mat-chip>
         </mat-chip-list>
     </mat-toolbar>
     <!-- *ngFor="let vegetable of vegetables"> -->
@@ -22,7 +17,7 @@
       <ng-container *ngIf="notes">
     <mat-card class="note primary_border" *ngFor="let note of notes">
       <mat-card-title-group>
-        <mat-card-title>{{ note.id }} {{ note.user_id }}</mat-card-title>
+        <mat-card-title> <h1>{{ note.note_title }}</h1></mat-card-title>
         <!-- <mat-card-subtitle *ngIf="note.timestamp"> 
           <span class = "timestamp">
             <span class = "accent">

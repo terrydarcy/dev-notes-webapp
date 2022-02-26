@@ -95,8 +95,18 @@ body {
 .primary_border {
   border-color: mat.get-color-from-palette($dev-notes-webapp-primary) !important;
 }
+.accent_border {
+  border-color: mat.get-color-from-palette($dev-notes-webapp-accent) !important;
+}
 .accent {
   color: mat.get-color-from-palette($dev-notes-webapp-accent) !important;
+}
+.background_primary {
+  background-color: mat.get-color-from-palette(
+    $dev-notes-webapp-primary,
+    "lighter"
+  ) !important;
+  color: white;
 }
  .btn-success {
    color: mat.get-color-from-palette($dev-notes-webapp-accent) !important;    

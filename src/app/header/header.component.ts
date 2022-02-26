@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit, Input } from '@angular/core';
+import { Component, HostBinding, OnInit, ChangeDetectorRef} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,19 +20,18 @@ export class HeaderComponent implements OnInit {
   darkModeLocal: boolean =
     localStorage.getItem('darkMode') === 'true' ? true : false;
 
-  constructor(public overlay: OverlayContainer, public dialog: MatDialog, private authService: AuthService) {
+  constructor(public overlay: OverlayContainer, public dialog: MatDialog, private authService: AuthService, private cdr: ChangeDetectorRef) {
     this.authService.getUserLoginStatus().subscribe((isLoggedIn: any) => {
       if (isLoggedIn) {
         this.user = isLoggedIn;
       } else {
         this.user = null;
       }
-      console.log(this.user);
-    });
-    this.setDarkModeFromLocalStorage();
+     });
   }
-
+  
   ngOnInit(): void {
+    this.setDarkModeFromLocalStorage();
     this.toggleControl.valueChanges.subscribe((darkMode) => {
       const darkClassName = 'darkMode';
       this.className = darkMode ? darkClassName : '';
@@ -44,11 +43,13 @@ export class HeaderComponent implements OnInit {
         localStorage.setItem('darkMode', 'false');
       }
     });
+    this.cdr.detectChanges();
   }
 
   setDarkModeFromLocalStorage = () => {
     if (this.darkModeLocal && this.parentRef) {
-      this.toggleControl.enable();
+      this.cdr.detectChanges();
+      this.toggleControl.setValue(this.darkModeLocal);
       this.parentRef.classList.add('darkMode');
     } else if (this.parentRef) {
       this.parentRef.classList.remove('darkMode');
