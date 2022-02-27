@@ -1,0 +1,17 @@
+<mat-card class="note primary_border" *ngIf = "note">
+    <mat-card-title-group>
+      <mat-card-title> <h1>{{ note.note_title }}</h1></mat-card-title>
+      <mat-card-subtitle *ngIf="note.timestamp"> 
+        <span class = "timestamp">
+          <span class = "accent">
+            {{getHour(note.timestamp)}}:{{getMinute(note.timestamp)}} 
+          </span>
+          <span class = "time">
+            @
+             {{getDay(note.timestamp)}}/{{getMonth(note.timestamp)}}/{{getYear(note.timestamp)}}
+          </span>
+         </span>
+       </mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>{{ note.note_text }}</mat-card-content>
+  </mat-card>

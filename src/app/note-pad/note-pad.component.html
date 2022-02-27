@@ -15,23 +15,7 @@
     <div class="note-container">
       <app-add-note *ngIf = "user" (noteEmmiter)= "addNoteFromEmitter($event)" [user] = "user"></app-add-note>
       <ng-container *ngIf="notes">
-    <mat-card class="note primary_border" *ngFor="let note of notes">
-      <mat-card-title-group>
-        <mat-card-title> <h1>{{ note.note_title }}</h1></mat-card-title>
-        <!-- <mat-card-subtitle *ngIf="note.timestamp"> 
-          <span class = "timestamp">
-            <span class = "accent">
-              {{note.timestamp.getHours()}}:{{note.timestamp.getMinutes()}} 
-            </span>
-            <span class = "time">
-              @
-               {{note.timestamp.getDate}}/{{note.timestamp.getMonth}}/{{note.timestamp.getFullYear}}
-            </span>
-           </span>
-         </mat-card-subtitle> -->
-      </mat-card-title-group>
-      <mat-card-content>{{ note.note_text }}</mat-card-content>
-    </mat-card>
-    <br />
+        <app-note *ngFor="let note of notes" [note] = "note"></app-note>
+        <br />
   </ng-container>
 </div>

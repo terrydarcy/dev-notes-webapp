@@ -31,11 +31,10 @@ export class NotePadComponent implements OnInit {
       } else {
         this.user = null;
       }
-    });
-    
+    });    
   }
 
   addNoteFromEmitter(newNote: any) {
-     this.notes.unshift(newNote);
-  }
+    this.notes.unshift(newNote);
+ }
 }

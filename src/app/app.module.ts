@@ -25,6 +25,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { AddNoteComponent } from './note-pad/add-note/add-note.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NoteComponent } from './note-pad/note/note.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LogInModalComponent,
     NotePadComponent,
     FooterComponent,
-    AddNoteComponent
+    AddNoteComponent,
+    NoteComponent
   ],
   imports: [
     BrowserModule,

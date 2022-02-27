@@ -24,27 +24,14 @@
         flex: 0 0 auto;
         padding: 16px;
     }
+
 }
 .note-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  margin-left:20px;
-  margin-right:20px;
-
-  .note {
-    min-width: 350px;
-    max-width: 350px;
-    margin-bottom: 10px;
-    border-top: 5px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
-}
-
-.timestamp {
-    font-size: 12px;
-    color: #999;
-    margin-bottom: 10px;
- 
-}
