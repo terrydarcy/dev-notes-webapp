@@ -61,15 +61,24 @@ export class AddNoteComponent implements OnInit {
     e.preventDefault();  
     const noteObservable = this.noteService.setNote(this.user.uid, this.capitalizeFirstLetter(this.title), this.capitalizeFirstLetter(this.description));
     noteObservable.subscribe((result) => {
+      console.log("result", result);
       if(result.data) {
          this.emitNote(result.data);
          this.toastr.success('Note created successfully!');
-      }else {
-        this.toastr.error('Please try again!', 'Note could not be created');  
-      }
-    });
-     this.close(e);
-  }
+         this.clearForm();
+         this.close(e);
+        }else {
+          this.toastr.error('Please try again!', 'Note could not be created');  
+        }
+      });
+    }
+    
+    clearForm() {
+      // this.titleFormControl.clearValidators();
+      // this.descriptionFormControl.clearValidators();
+      this.titleFormControl.reset();
+      this.descriptionFormControl.reset();
+    }
   
   capitalizeFirstLetter(text: string) {
     return text.charAt(0).toUpperCase() + text.slice(1);
@@ -77,6 +86,7 @@ export class AddNoteComponent implements OnInit {
 
   close(e: Event) {
     e.preventDefault();
+    this.clearForm();
     this.isDisabled = true;
     this.mouseOvered = false;
   }

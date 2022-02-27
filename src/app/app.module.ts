@@ -53,7 +53,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatDialogModule,
     MatDividerModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 2000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
