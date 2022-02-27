@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import {Note} from "../../models/Interfaces";
 import { environment } from 'src/environments/environment';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -69,7 +68,7 @@ export class NoteService {
       url: `/notes/${id}`,
       baseURL: this.baseUrl,
      })
-     console.log("doing it", result)
+     console.log("doing it",)
 
      return result;
   }

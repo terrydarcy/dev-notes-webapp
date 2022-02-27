@@ -56,8 +56,8 @@ export const _signInWithEmailAndPassword = (email:string, password: string) => {
   });
 }
 
-export const _loginWithGitHub = () => {
-  signInWithPopup(auth, provider)
+export const  _loginWithGitHub = async() => {
+  await signInWithPopup(auth, provider)
   .then((result) => {
     // This gives you a GitHub Access Token. You can use it to access the GitHub API.
     const credential = GithubAuthProvider.credentialFromResult(result);

@@ -41,3 +41,8 @@ mat-slide-toggle {
 .profile-icon {
   color: white !important;
 }
+
+
+mat-menu {
+  z-index: 10000;
+}

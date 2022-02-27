@@ -111,3 +111,9 @@ body {
  .btn-success {
    color: mat.get-color-from-palette($dev-notes-webapp-accent) !important;    
 }
+
+.toast-top-right {
+  top: 120px !important;
+  z-index: 5 !important;
+  right: 12px;
+}

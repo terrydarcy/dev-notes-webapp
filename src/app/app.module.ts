@@ -27,7 +27,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NoteComponent } from './note-pad/note/note.component';
 import {MatDividerModule} from '@angular/material/divider';
-
+import { ToastrModule } from 'ngx-toastr';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,11 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSlideToggleModule,
     MatDialogModule,
     MatDividerModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
     MatInputModule,
     MatChipsModule,
     MatButtonToggleModule,

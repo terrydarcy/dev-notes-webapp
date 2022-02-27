@@ -8,6 +8,8 @@ import {take} from 'rxjs/operators';
 import {pairwise, startWith} from 'rxjs/operators';
 import { Output, EventEmitter } from '@angular/core';
 import { Note } from '../../models/Interfaces';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
@@ -27,7 +29,7 @@ export class AddNoteComponent implements OnInit {
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
   @Input() user: any;
 
-  constructor(private noteService: NoteService, private _ngZone: NgZone) { }
+  constructor(private noteService: NoteService, private _ngZone: NgZone, private toastr: ToastrService) { }
  
   ngOnInit(): void {
     this.titleFormControl
@@ -61,6 +63,9 @@ export class AddNoteComponent implements OnInit {
     noteObservable.subscribe((result) => {
       if(result.data) {
          this.emitNote(result.data);
+         this.toastr.success('Note created successfully!');
+      }else {
+        this.toastr.error('Please try again!', 'Note could not be created');  
       }
     });
      this.close(e);

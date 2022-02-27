@@ -19,6 +19,7 @@ export class NotePadComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.getUserLoginStatus().subscribe((isLoggedIn: any) => {
+      console.log("loggedin:", isLoggedIn);
       if (isLoggedIn) {
         this.user = isLoggedIn;
         this.notesDataObservable = this.noteService.getNotes(this.user.uid.toString());

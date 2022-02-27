@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {Note} from "../../models/Interfaces";
 import { Output, EventEmitter } from '@angular/core';
 import { NoteService } from '../../services/note/note.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-note',
@@ -13,13 +14,18 @@ export class NoteComponent implements OnInit {
   @Input() note!: any;
   @Output() deleteEmitter = new EventEmitter<Note>();
 
-  constructor(private noteService: NoteService ) { }
+  constructor(private noteService: NoteService, private toastr: ToastrService ) { }
 
   ngOnInit(): void {}
 
   delete(note: Note) {
      this.noteService.deleteNote(note.id).subscribe((result) => {
-      if(result.data) this.emitNote(result.data);
+      if(result.data) {
+        this.emitNote(result.data);
+        this.toastr.success('Note deleted successfully!');
+      }else {
+        this.toastr.error('Please try again','Note could not be deleted!');
+      }
     });
   }
 

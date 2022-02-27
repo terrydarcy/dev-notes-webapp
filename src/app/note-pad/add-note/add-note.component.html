@@ -49,10 +49,10 @@
         <div class = "footer-left">
           <mat-button-toggle-group name="fontStyle" aria-label="Font Style" multiple>
             <mat-button-toggle value="checklist">
-              <mat-icon color="accent">check_box</mat-icon>
+              <mat-icon color="accent">checklist_rtl</mat-icon>
              </mat-button-toggle>
              <mat-button-toggle value="dueDate">
-              <mat-icon color="accent">access_time</mat-icon>
+              <mat-icon color="accent">alarm_on</mat-icon>
              </mat-button-toggle>
            </mat-button-toggle-group>
 
@@ -83,15 +83,19 @@
 </mat-card>
 
 <ng-template #disabled>
-  <div class="add-note-card-disabled"
+  <button mat-raised-button style ="margin-bottom: 20px">
+
+    <div class="add-note-card-disabled"
     [class.btn-success]="mouseOvered" 
     (mouseover)="mouseOvered=true"
     (mouseout)="mouseOvered=false"
     (click)="isDisabled=false"
-  >
-    <button mat-mini-fab class ="add-note-button"  >
-        <mat-icon class="profile-icon">add</mat-icon>
+    >
+    <button mat-icon-button class ="add-note-button"  >
+      <mat-icon class="profile-icon">note_add</mat-icon>
     </button>
     Add Note
   </div>
+</button>
+ 
 </ng-template>
