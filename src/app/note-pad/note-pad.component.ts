@@ -37,4 +37,9 @@ export class NotePadComponent implements OnInit {
   addNoteFromEmitter(newNote: any) {
     this.notes.unshift(newNote);
  }
+
+ deleteNoteFromEmitter(deleteNotes: any) {
+   let noteToDelete = deleteNotes[0];
+   if(noteToDelete) this.notes= this.notes.filter((note) =>JSON.stringify(note) !==  JSON.stringify(noteToDelete))
+  }
 }

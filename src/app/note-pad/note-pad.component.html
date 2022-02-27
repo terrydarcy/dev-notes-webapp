@@ -1,21 +1,18 @@
-<!-- <p *ngIf ="user">{{user.email}}</p> -->
- 
-    <mat-toolbar class="projects-container">
-        <mat-chip-list>
-            <mat-chip class="example-box" cdkDrag> Project1 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project2 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project3 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project1 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project2 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project3 </mat-chip>
-            <mat-chip class="example-box" cdkDrag> Project1 </mat-chip>
-        </mat-chip-list>
-    </mat-toolbar>
-    <!-- *ngFor="let vegetable of vegetables"> -->
-    <div class="note-container">
-      <app-add-note *ngIf = "user" (noteEmmiter)= "addNoteFromEmitter($event)" [user] = "user"></app-add-note>
-      <ng-container *ngIf="notes">
-        <app-note *ngFor="let note of notes" [note] = "note"></app-note>
-        <br />
+<mat-toolbar class="projects-container">
+  <mat-chip-list>
+      <mat-chip class="example-box" cdkDrag> Project1 </mat-chip>
+      <mat-chip class="example-box" cdkDrag> Project2 </mat-chip>
+      <mat-chip class="example-box" cdkDrag> Project3 </mat-chip>
+      <mat-chip class="example-box" cdkDrag> Project1 </mat-chip>
+      <mat-chip class="example-box" cdkDrag> Project2 </mat-chip>
+      <mat-chip class="example-box" cdkDrag> Project3 </mat-chip>
+      <mat-chip class="example-box" cdkDrag> Project1 </mat-chip>
+  </mat-chip-list>
+</mat-toolbar>
+
+<div class="note-container">
+  <app-add-note *ngIf = "user" (noteEmitter)= "addNoteFromEmitter($event)" [user] = "user"></app-add-note>
+  <ng-container *ngIf="notes">
+    <app-note *ngFor="let note of notes" (deleteEmitter)= "deleteNoteFromEmitter($event)" [note] = "note"></app-note><br />
   </ng-container>
 </div>

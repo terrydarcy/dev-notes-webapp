@@ -57,6 +57,20 @@ export class NoteService {
       }
      })
      return result;
+  }
 
+  deleteNote(id: number) : AxiosObservable<Note>  {
+    let result = axios.request({
+      headers :{
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      method:'delete',
+      url: `/notes/${id}`,
+      baseURL: this.baseUrl,
+     })
+     console.log("doing it", result)
+
+     return result;
   }
 }

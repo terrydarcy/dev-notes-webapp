@@ -22,7 +22,7 @@ export class AddNoteComponent implements OnInit {
   title: string = "";
   description: string= "";
   faCheckSquare = faCheckSquare as IconProp;
-  @Output() noteEmmiter = new EventEmitter<Note>();
+  @Output() noteEmitter = new EventEmitter<Note>();
 
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
   @Input() user: any;
@@ -47,7 +47,7 @@ export class AddNoteComponent implements OnInit {
   }
 
   emitNote(note: Note) {
-    this.noteEmmiter.emit(note);
+    this.noteEmitter.emit(note);
   }
 
   triggerResize() {

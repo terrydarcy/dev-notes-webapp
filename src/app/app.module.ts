@@ -26,6 +26,7 @@ import { AddNoteComponent } from './note-pad/add-note/add-note.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NoteComponent } from './note-pad/note/note.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { NoteComponent } from './note-pad/note/note.component';
     MatToolbarModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatDividerModule,
     MatInputModule,
     MatChipsModule,
     MatButtonToggleModule,
