@@ -12,7 +12,11 @@
 
 <div class="note-container">
   <app-add-note *ngIf = "user" (noteEmitter)= "addNoteFromEmitter($event)" [user] = "user"></app-add-note>
-  <ng-container *ngIf="notes">
+  <ng-container *ngIf="notes else loading">
     <app-note *ngFor="let note of notes" (deleteEmitter)= "deleteNoteFromEmitter($event)" [note] = "note"></app-note><br />
   </ng-container>
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
 </div>
+

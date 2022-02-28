@@ -28,7 +28,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NoteComponent } from './note-pad/note/note.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { ToastrModule } from 'ngx-toastr';
- 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     MatCardModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
     FormsModule,
     AppRoutingModule,
     MatButtonModule,

@@ -18,6 +18,9 @@ export class LogInModalComponent extends BaseComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<LogInModalComponent>, private authService: AuthService) {
     super();
+  }
+  
+  ngOnInit(): void {
     this.emailFormControl
     .valueChanges
     .pipe(startWith(null), pairwise())
@@ -32,9 +35,6 @@ export class LogInModalComponent extends BaseComponent implements OnInit {
     .subscribe(([prev, next]: [any, any]) => {
       this.password = next;
     });
-  }
-  
-  ngOnInit(): void {
   }
 
   clearForm() {

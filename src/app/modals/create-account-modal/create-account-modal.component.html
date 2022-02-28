@@ -9,22 +9,54 @@
         <form class="example-form">
             <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Username</mat-label>
-            <input matInput type="text" placeholder="Ex. elonmusk420"  [(ngModel)]="username" name="password"/>
-            </mat-form-field>
+            <input matInput type="text" placeholder="Ex. elonmusk420" [formControl] = "usernameFormControl" [(ngModel)]="username" name="username"/>
+            <mat-error *ngIf="usernameFormControl.hasError('minlength') && !usernameFormControl.hasError('required')">
+                Username must be longer than 3 characters
+                </mat-error>
+                <mat-error *ngIf="usernameFormControl.hasError('required') && !usernameFormControl.hasError('minlength')">
+                Username is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="usernameFormControl.hasError('email') &&  !usernameFormControl.hasError('minlength') && !emailFormControl.hasError('required')">
+                Username is <strong> formatted incorrectly</strong>
+                </mat-error>
+        </mat-form-field>
+        <br *ngIf="usernameFormControl.hasError('maxlength') || usernameFormControl.hasError('minlength')"/>             
         
-            <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="Ex. elonmusk@email.com" [(ngModel)]="email" name="email" />
+            <input matInput type="email" placeholder="Ex. elonmusk@email.com" [formControl] = "emailFormControl"  name="email"/>
+            <mat-error *ngIf="emailFormControl.hasError('minlength') && !emailFormControl.hasError('required')">
+                Email must be longer than 3 characters
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required') && !emailFormControl.hasError('minlength')">
+                Email is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('email') &&  !emailFormControl.hasError('minlength') && !emailFormControl.hasError('required')">
+                Email is <strong> formatted incorrectly</strong>
+                </mat-error>
             </mat-form-field>
-        
+            <br *ngIf="emailFormControl.hasError('maxlength') || emailFormControl.hasError('minlength')"/>             
+
+            
             <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" [(ngModel)]="password" name="password"/>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" [formControl] = passwordFormControl name="password"/>
+                <mat-error *ngIf="passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required') && !passwordFormControl.hasError('maxlength')" >
+                    Password must be longer than <strong> 3 characters</strong>
+                </mat-error>
+                <mat-error *ngIf="passwordFormControl.hasError('required') && !passwordFormControl.hasError('minlength')">
+                    Password is <strong>required</strong>
+                </mat-error>
+                <mat-error style ="margin-bottom: 20px" *ngIf="passwordFormControl.hasError('maxlength') &&  !passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')">
+                    Password can't be longer than <strong> 30characters </strong>
+                </mat-error>
             </mat-form-field>
+            <br *ngIf="passwordFormControl.hasError('maxlength') || passwordFormControl.hasError('minlength')"/>             
+
+        <div class = "auth-button-row">
             <button mat-raised-button  style ="background-color:#3BA55D"  (click)="createAccountEmailPassword($event)" >Create Account</button>
-            <span>
-                <button mat-raised-button  color= "primary" (click)="transferAuth($event)"  class ="darkPrimary">Login Instead</button>
-            </span>
+            <button mat-raised-button  color= "primary" (click)="transferAuth($event)"  class ="darkPrimary">Login Instead</button>
+        </div>
         </form>
         <h4 style="margin:0px; margin-bottom: 10px">or join with</h4>
     
