@@ -73,12 +73,10 @@ export class AddNoteComponent implements OnInit {
       });
     }
     
-    clearForm() {
-      // this.titleFormControl.clearValidators();
-      // this.descriptionFormControl.clearValidators();
-      this.titleFormControl.reset();
-      this.descriptionFormControl.reset();
-    }
+  clearForm() {
+    this.titleFormControl.reset();
+    this.descriptionFormControl.reset();
+  }
   
   capitalizeFirstLetter(text: string) {
     return text.charAt(0).toUpperCase() + text.slice(1);
