@@ -18,7 +18,6 @@ export class AuthService {
 
   login(dialogRef: any, email: string, password: string): void {
     _signInWithEmailAndPassword(email, password);
-    this.isLoggedIn = true;
     this.toastr.success('Logged in successfully');
     dialogRef.close(false);
     this.emitChanges();
@@ -61,8 +60,6 @@ export class AuthService {
         this.emitChanges();
         this.userLoginStatusSubject.next(null);
         this.toastr.success('Logout successful');
-
-        this.router.navigate(['/note-pad']);
       })
       .catch((error: any) => {
         console.error(error);
@@ -76,8 +73,11 @@ export class AuthService {
     auth.onAuthStateChanged((credential) => {
       if (credential) {
         this.isLoggedIn = true;
+        console.log('logged in');
         this.userLoginStatusSubject.next(credential);
       } else {
+        this.isLoggedIn = false;
+
         this.userLoginStatusSubject.next(null);
       }
     });

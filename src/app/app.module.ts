@@ -29,6 +29,7 @@ import { NoteComponent } from './note-pad/note/note.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { ToastrModule } from 'ngx-toastr';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NotePadComponent,
     FooterComponent,
     AddNoteComponent,
-    NoteComponent
+    NoteComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
