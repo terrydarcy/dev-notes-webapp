@@ -86,16 +86,12 @@ export class AuthService {
     let result : boolean = (JSON.parse(isLoggedIn_) === true);
 
     return result || this.isLoggedIn;
-
-    // Auth.currentUser
   }
 
   authStatusListener() {
     auth.onAuthStateChanged((credential) => {
       if (credential) {
         this.isLoggedIn = true;
-        
-        console.log('logged in');
         this.userLoginStatusSubject.next(credential);
       }
     });
