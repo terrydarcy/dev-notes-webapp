@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { auth, _signInWithEmailAndPassword, _loginWithGitHub,  _createUserWithEmailAndPassword} from '../../../firebase';
 import { Router } from '@angular/router';
 import { signOut } from 'firebase/auth';
 import { ToastrService } from 'ngx-toastr';
-
-@Injectable({
+  @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
@@ -13,14 +12,26 @@ export class AuthService {
   userLoginStatusSubject = new BehaviorSubject<any>(this.isLoggedIn);
 
   constructor(private router: Router, private toastr: ToastrService) {
-    this.authStatusListener();
+    auth.onAuthStateChanged((credential) => {
+      if (credential) {
+        this.isLoggedIn = true;
+        console.log("userLoginRetrieved", this.isLoggedIn);
+        // console.log('logged in');
+        this.userLoginStatusSubject.next(credential);
+      }  
+    });
+
   }
+
+
 
   login(dialogRef: any, email: string, password: string): void {
     _signInWithEmailAndPassword(email, password);
     this.toastr.success('Logged in successfully');
-    dialogRef.close(false);
+    this.isLoggedIn = true;
+    localStorage.setItem('isLoggedIn', 'true');
     this.emitChanges();
+    dialogRef.close(false);
   }
 
   getUserLoginStatus(): Observable<any> {
@@ -28,7 +39,7 @@ export class AuthService {
   }
 
   emitChanges() {
-    this.userLoginStatusSubject.next(this.isLoggedIn);
+     this.userLoginStatusSubject.next(this.isLoggedIn);
   }
 
   createAccount(
@@ -39,27 +50,30 @@ export class AuthService {
   ): void {
     _createUserWithEmailAndPassword(username, email, password);
     this.toastr.success('Account created and logged in successfully');
+    localStorage.setItem('isLoggedIn', 'true');
 
-    dialogRef.close(false);
+    this.isLoggedIn = true;
     this.emitChanges();
+    dialogRef.close(false);
   }
 
   loginWithGitHub(dialogRef: any) {
     _loginWithGitHub().then(() => {
       this.toastr.success('Github login successful');
+      localStorage.setItem('isLoggedIn', 'true');
+      this.isLoggedIn = true;
+      this.emitChanges();
+      dialogRef.close(false);
     });
-    dialogRef.close(false);
-    this.emitChanges();
-
   }
 
   logout() {
     signOut(auth)
       .then(() => {
         this.isLoggedIn = false;
+        localStorage.setItem('isLoggedIn', 'false');
         this.emitChanges();
-        this.userLoginStatusSubject.next(null);
-        this.toastr.success('Logout successful');
+         this.toastr.success('Logout successful');
       })
       .catch((error: any) => {
         console.error(error);
@@ -67,20 +81,25 @@ export class AuthService {
   }
 
   //check localstorage for user
-  checkLogin() {}
+  checkLogin() : boolean {
+    let isLoggedIn_ = String(localStorage.getItem('isLoggedIn'));
+    let result : boolean = (JSON.parse(isLoggedIn_) === true);
+
+    return result || this.isLoggedIn;
+
+    // Auth.currentUser
+  }
 
   authStatusListener() {
     auth.onAuthStateChanged((credential) => {
       if (credential) {
         this.isLoggedIn = true;
+        
         console.log('logged in');
         this.userLoginStatusSubject.next(credential);
-      } else {
-        this.isLoggedIn = false;
-
-        this.userLoginStatusSubject.next(null);
       }
     });
+      
     this.emitChanges();
   }
 }

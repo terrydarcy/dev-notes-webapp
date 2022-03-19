@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword, updateProfile, GithubAuthProvider} from "firebase/auth";
-
+ 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -41,11 +41,14 @@ export const _createUserWithEmailAndPassword: any = (username:string, email:stri
   });
 }
 
-export const _signInWithEmailAndPassword = (email:string, password: string) => {
+export const _signInWithEmailAndPassword = async (email:string, password: string) : Promise<any> => {
+  
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+
+    return user;
  
     // ...
   })
