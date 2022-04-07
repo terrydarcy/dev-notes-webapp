@@ -13,7 +13,9 @@
 <div class="note-container">
   <app-add-note *ngIf = "user" (noteEmitter)= "addNoteFromEmitter($event)" [user] = "user"></app-add-note>
   <ng-container *ngIf="notes else loading">
-    <app-note *ngFor="let note of notes" (deleteEmitter)= "deleteNoteFromEmitter($event)" [note] = "note"></app-note><br />
+    <mat-accordion multi>
+      <app-note *ngFor="let note of notes" (deleteEmitter)= "deleteNoteFromEmitter($event)" [note] = "note"></app-note><br />
+    </mat-accordion>
   </ng-container>
   <ng-template #loading>
     <mat-spinner></mat-spinner>

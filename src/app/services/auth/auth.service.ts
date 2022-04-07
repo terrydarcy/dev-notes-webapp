@@ -57,8 +57,9 @@ export class AuthService {
     dialogRef.close(false);
   }
 
-  loginWithGitHub(dialogRef: any) {
-    _loginWithGitHub().then(() => {
+  async loginWithGitHub (dialogRef: any) {
+    await _loginWithGitHub().then((res) => {
+      console.log("result:", res);
       this.toastr.success('Github login successful');
       localStorage.setItem('isLoggedIn', 'true');
       this.isLoggedIn = true;
@@ -70,10 +71,11 @@ export class AuthService {
   logout() {
     signOut(auth)
       .then(() => {
+        this.router.navigate(['/home']);
         this.isLoggedIn = false;
         localStorage.setItem('isLoggedIn', 'false');
         this.emitChanges();
-         this.toastr.success('Logout successful');
+        this.toastr.success('Logout successful');
       })
       .catch((error: any) => {
         console.error(error);

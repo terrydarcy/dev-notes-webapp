@@ -33,6 +33,7 @@ import { HomeComponent } from './home/home.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     MatSlideToggleModule,
     MatDialogModule,
     MatDividerModule,
+    MatExpansionModule,
     ToastrModule.forRoot({
       timeOut: 2000,
       positionClass: 'toast-top-right',

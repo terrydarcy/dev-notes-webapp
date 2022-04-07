@@ -47,6 +47,7 @@ export const _signInWithEmailAndPassword = async (email:string, password: string
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+    localStorage.setItem('user', JSON.stringify(user));
 
     return user;
  
@@ -70,6 +71,7 @@ export const  _loginWithGitHub = async() => {
 
     // The signed-in user info.
     const user = result.user;
+    return user;
    }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;

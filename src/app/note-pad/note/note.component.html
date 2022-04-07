@@ -1,5 +1,5 @@
-<mat-card class="note primary_border" *ngIf = "note">
-    <mat-card-title-group>
+<!--<mat-card class="note primary_border" *ngIf = "note">
+     <mat-card-title-group>
       <mat-card-title> 
           <h1 style= "margin:0">{{ note.note_title }}</h1>
         </mat-card-title>
@@ -13,7 +13,7 @@
                     {{getDay(note.timestamp)}}/{{getMonth(note.timestamp)}}/{{getYear(note.timestamp)}}
                 </span>
             </span>
-        </mat-card-subtitle> -->
+        </mat-card-subtitle> 
     </mat-card-title-group>
     <mat-card-content style = "white-space: pre-wrap;">{{ note.note_text }}</mat-card-content>
     <mat-divider inset></mat-divider>
@@ -25,5 +25,31 @@
         <button mat-icon-button color="warn" (click) = "delete(note)">
             <mat-icon style="font-size: 20px">delete_forever</mat-icon>
         </button>
-    </mat-card-actions>
-</mat-card>
+    </mat-card-actions> 
+</mat-card>-->
+    <mat-expansion-panel class="note primary_border">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ note.note_title }} 
+          </mat-panel-title>
+          <mat-panel-description *ngIf="note.timestamp">
+            <span class = "timestamp">
+                <span class = "accent">
+                    {{getHour(note.timestamp)}}:{{getMinute(note.timestamp)}} 
+                </span>
+                <span class = "time">
+                    {{getDay(note.timestamp)}}/{{getMonth(note.timestamp)}}/{{getYear(note.timestamp)}}
+                </span>
+                </span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p style = "white-space: pre-wrap;">{{note.note_text}}</p>
+        <div class="button_actions">
+            <button mat-icon-button color="accent" disabled>
+                <mat-icon style="font-size: 20px">edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click) = "delete(note)" >
+                <mat-icon style="font-size: 20px">delete_forever</mat-icon>
+            </button>
+        </div>
+       </mat-expansion-panel>    

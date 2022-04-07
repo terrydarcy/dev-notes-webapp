@@ -16,14 +16,14 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin ( url: string) : boolean | UrlTree {
-
+    console.log(this.authService.checkLogin());
     if (this.authService.checkLogin()) {
       console.log("logged in here");
       return true;
     
     }
     //this.authService.checkLogin();
-    return this.router.parseUrl("/home");
+    return false;
   }
         
 }
